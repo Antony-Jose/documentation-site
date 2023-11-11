@@ -1,3 +1,3 @@
 # documentation-site
 
-these are some changes
+A helpful website to assist in handling requests and permission for institutions.
