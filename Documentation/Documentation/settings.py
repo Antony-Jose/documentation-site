@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'faculty',
     'HOD',
+    'authenticate'
 ]
 
 MIDDLEWARE = [
