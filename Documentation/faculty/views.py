@@ -20,11 +20,14 @@ def facultyLogin(request):
 
         # Authenticate user
         user = authenticate(request, username=username, password=password)
-
+ 
         if user is not None:
+            if user.groups.filter(name='faculty').exists():
             # User is valid, log them in
-            login(request, user)
-            return render(request, 'faculty/home.html')  # Replace 'home' with the URL you want to redirect to after successful login
+                login(request, user)
+                return render(request, 'faculty/home.html')  # Replace 'home' with the URL you want to redirect to after successful login
+            else:
+                return render(request, 'faculty/login.html', {'error_message': 'No permission to login'})
         else:
             # Invalid login credentials
             return render(request, 'faculty/login.html', {'error_message': 'Invalid username or password'})
