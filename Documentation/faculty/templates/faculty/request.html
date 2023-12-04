@@ -1,0 +1,121 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'request.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>REQUEST</title>
+  </head>
+  <body>
+    <div class="your-div">
+      <!-- Your content goes here -->
+      <div class="hai">
+        <p class="christ">CHRIST COLLEGE OF ENGINEERING, IRINJALAKUDA</p>
+        <div id="currentDate"></div>
+      </div>
+      <div class="images">
+      <img 
+        src="{% static 'images/powerLoginButton.png' %}"
+        alt=""
+      />
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left">
+            <div class="profile">
+                <div class="div-img" >
+                    <img src="{% static 'images/profile.png' %}" alt="">
+                </div>
+            </div>
+            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)" ><p>REQUEST</p></div>
+            <div class="box"><p>HISTORY</p></div>
+            <div class="box"><p>NOTIFICATIONS</p></div>
+        </div>
+        <div class="right">
+           <div>
+                <div>
+                    <p class="r1">REQUEST</p>
+                </div>
+                <div>
+                    <p style="font-size: 15px;" >FROM</p>
+                </div>
+                <div class="r3">
+                    <p>Bhagyasree P V</p>
+                </div>
+
+                <div class="div1">
+
+                    <div >
+                       <p style="font-size: 15px;"></p> Department</p>
+                    </div>
+                    <div>
+                        <p style="margin-right: 110px;">Semester</p>
+                    </div>
+                </div>
+                <div class="div2">
+                    <div class="r3">
+                        <p>CSE</p>
+                    </div>
+
+                    <div>
+                        <label for="myInput"></label>
+                        <input class="sem" type="text" id="sem" name="myInput">
+
+                    </div>
+                </div>
+                <div>
+                    <p style="font-size: 15px;">date:</p>    
+                </div>
+                <div>
+                 <label for="datePicker"></label>
+  <input type="date" id="datePicker" name="selectedDate" class="date-picker">
+                </div>
+                <div>
+                    <p style="font-size: 15px;">Subject:</p>
+                </div>
+                <div>
+                    <label for="myInput"></label>
+                    <input class="myInput" type="text" id="myInput" name="myInput">
+                </div>
+                <div>
+                    <p style="font-size:15px ;">Body</p>
+                </div>
+                <div class="input-body">
+                    <label for="myInput"></label>
+                    <textarea style="border: 2px solid black;border-radius: 10px; " class="input-body" id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>                </div>
+
+           </div>
+           <div>
+            <form>
+               
+            
+                <input type="submit" value="Submit" class="submit-button">
+              </form>
+           </div>
+        </div>
+
+    </div>
+  </body>
+
+
+
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Format the date (optional)
+    var options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    var formattedDate = currentDate.toLocaleDateString("en-US", options);
+
+    // Display the date in a div
+    document.getElementById("currentDate").textContent = formattedDate;
+  </script>
+</html>

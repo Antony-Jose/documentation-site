@@ -1,11 +1,62 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Home</title>
-</head>
-<body>
-    this is Faculty home page html
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>HOME PAGE</title>
+  </head>
+  <body>
+    <div class="your-div">
+      <!-- Your content goes here -->
+      <div class="hai">
+        <p class="christ">CHRIST COLLEGE OF ENGINEERING, IRINJALAKUDA</p>
+        <div id="currentDate"></div>
+      </div>
+      <div class="images">
+      <img 
+        src="{% static 'images/powerLoginButton.png' %}"
+        alt=""
+      />
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="left">
+            <div class="profile">
+                <div class="div-img" >
+                    <img src="{% static 'images/profile.png' %}" alt="">
+                </div>
+            </div>
+            <div class="box"><a href="request.html"><p>REQUEST</p></a></div>
+            <div class="box"><p>HISTORY</p></div>
+            <div class="box"><p>NOTIFICATIONS</p></div>
+        </div>
+        <div class="right">
+            <div class="right-sub"><p class="main">BHAGYASREE P V</p></div>
+            <div><p class="sub">Assistant Professor , CSE Department</p></div>
+        </div>
+    </div>
+  </body>
+
+
+
+  <script>
+    // Get the current date
+    var currentDate = new Date();
+
+    // Format the date (optional)
+    var options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    var formattedDate = currentDate.toLocaleDateString("en-US", options);
+
+    // Display the date in a div
+    document.getElementById("currentDate").textContent = formattedDate;
+  </script>
 </html>

@@ -1,0 +1,143 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .your-div {
+    background-color:#190C2A;
+    width: 100%;
+    padding: 10px 0;
+    height: 56px;
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+     /* Align items to the right */
+
+
+
+  }
+
+  .hai{
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  }
+  .christ{
+    color: #FEFEFE;
+    font-family: Encode Sans Semi Condensed;
+    
+  }
+
+  /* white-power-button-icon-isolated-on-transparent-vector-25548948-removebg-preview 1 */
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+  }
+ .images{
+  width: 38px;
+  height: 44px;
+  margin-right: 5px;
+ }
+
+
+#currentDate {
+
+    height: 49px;
+    top: 13px;
+    left: 1052px;
+    font-family: Encode Sans Semi Condensed;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 50px;
+    letter-spacing: 0em;
+    color: #FEFEFE;
+}
+.profile{
+    width: 284px;
+    height: 243px;
+    top: 56px;
+border-radius: 0px, 0px, 10px, 0px;
+border: 1px;
+background: -moz-linear-gradient(0deg, #41208B, #41208B);
+linear-gradient(0deg, #7654C2, #7654C2);
+
+
+
+
+}
+.content{
+  display: flex;
+
+
+}
+.left{
+width: 15%;
+height: 450px;
+display: flex;
+flex-direction: column;
+align-items: center;
+
+
+}
+.right{
+  width:100%;
+  height:100px;
+  box-sizing: border-box;   
+  border:solid black;
+  border-radius: 10px;
+  border-left:0ch ;
+
+}
+
+.profile{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  width: 100%;
+  background-color: #7654C2;
+  box-sizing: border-box;   
+  border:solid black;
+  border-radius: 10px;
+}
+
+.div-img{
+  height: 100px;
+  width: 100px;
+  
+ 
+}
+.right-sub{
+  display: flex;
+  flex-direction: column;
+  height: 40px;
+
+}
+.main{
+  margin-left: 20px;
+  font-family:Encode Sans Semi Condensed;
+  font-size: 25px;
+  font: bolder;
+
+}
+.sub{
+  margin-left: 20px;
+  font-family: Encode Sans Semi Condensed;
+}
+
+.box{
+
+width: 100%;
+border-radius:10px;
+border:solid black;
+display: flex;
+justify-content: center;
+border-top: 0px;
+
+
+}
