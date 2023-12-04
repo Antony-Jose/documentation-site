@@ -19,7 +19,7 @@ def HODLogin(request):
         if user is not None:
             # User is valid, log them in
             login(request, user)
-            return render(request, 'HOD/home.html')  # Replace 'home' with the URL you want to redirect to after successful login
+            return render(request, 'HOD/home.html') 
         else:
             # Invalid login credentials
             return render(request, 'HOD/login.html', {'error_message': 'Invalid username or password'})
