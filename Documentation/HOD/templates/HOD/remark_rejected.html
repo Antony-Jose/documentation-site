@@ -3,10 +3,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="{% static 'styles.css' %}" />
+    <link rel="stylesheet" href="{% static 'remark_rejected.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>HOME PAGE</title>
+    <title>REMARK</title>
   </head>
   <body>
     <div class="your-div">
@@ -33,10 +33,36 @@
             <div class="box"><p>REQUEST</p></div>
             <div class="box"><p>NOTIFICATIONS</p></div>
         </div>
-        <div class="right">
-            <div class="right-sub"><p class="main">Dr. VINCE PAUL A</p></div>
-            <div><p class="sub">Head Of Department , CSE Department</p></div>
-        </div>
+        <div class="right" style="height: 500px;">
+            <div>
+                <p style="font-weight: bold; font-size: 30px;padding-left: 30px; ">REJECTED</p>
+                <p style="font-size: 20PX;padding-left: 30PX;padding-top: 50px;">REMARK :</p>
+                <div style="padding-left: 30px; height: 100px;">
+                  <label for="myInput"></label>
+                  <textarea class="shadow-box"
+                    style="
+                      border: 2px solid black;
+                      border-radius: 10px;
+                      height: 320px;
+                    "
+                    class="input-body"
+                    id="multilineInput"
+                    name="multilineInput"
+                    rows="4"
+                    cols="50"
+                  ></textarea>
+            
+              </div>
+              <div style="margin-top:250px;margin-right: 100px;margin-left: 30px;">
+                <form>
+               
+            
+                  <input type="submit" value="Submit" class="submit-button">
+                </form>
+            </div>
+        
+            </div>
+       
     </div>
   </body>
 
