@@ -30,9 +30,13 @@
                     <img src="{% static 'images/profile.png' %}" alt="">
                 </div>
             </div>
+            
+            
+            <div class="box"><a href="{% url 'fhome' %}"><p>HOME</p></a></div>
+            <div class="box"><a href="{% url 'fstatus' %}"><p>STATUS</p></a></div>
             <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)" ><p>REQUEST</p></div>
-            <div class="box"><p>HISTORY</p></div>
-            <div class="box"><p>NOTIFICATIONS</p></div>
+            <div class="box"><a href="{% url 'fhistory' %}"><p>HISTORY</p></a></div>
+            <div class="box"><a href="{% url 'fnotifications' %}"><p>NOTIFICATIONS</p></a></div>
         </div>
         <div class="right">
            <div>

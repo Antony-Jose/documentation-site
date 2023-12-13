@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>HOME PAGE</title>
+    <title>HOME</title>
   </head>
   <body>
     <div class="your-div">
@@ -30,9 +30,12 @@
                     <img src="{% static 'images/profile.png' %}" alt="">
                 </div>
             </div>
-            <div class="box"><a href="frequest"><p>REQUEST</p></a></div>
-            <div class="box"><p>HISTORY</p></div>
-            <div class="box"><p>NOTIFICATIONS</p></div>
+            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)"><p>HOME</p></a></div>
+            <div class="box"><a href="{% url 'fstatus' %}"><p>STATUS</p></a></div>
+            <div class="box"><a href="{% url 'frequest' %}"><p>REQUEST</p></a></div>
+            <div class="box"><a href="{% url 'fhistory' %}"><p>HISTORY</p></a></div>
+            <div class="box"><a href="{% url 'fnotifications' %}"><p>NOTIFICATIONS</p></a></div>
+            
         </div>
         <div class="right">
             <div class="right-sub"><p class="main">BHAGYASREE P V</p></div>

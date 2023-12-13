@@ -7,6 +7,11 @@ from django.contrib.auth import authenticate, login
 @login_required(login_url='/HODLogin')
 def HOD(request):
     return render(request, 'HOD/home.html')
+def approved(request):
+    return render(request, 'HOD/approved.html')
+def rejected(request):
+    return render(request, 'HOD/rejected.html')
+
 
 def HODLogin(request):
     if request.method == 'POST':

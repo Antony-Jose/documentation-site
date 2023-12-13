@@ -3,12 +3,12 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('faculty/',views.faculty),
-    path('facultyLogin/',views.facultyLogin),
-    path('faculty/frequest',views.frequest), 
-    path('faculty/fhistory',views.fhistory),
-    path('faculty/fstatus',views.fstatus),
-    path('faculty/fnotifications',views.fnotifications),
+    path('faculty/',views.faculty,name="fhome"),
+    path('facultyLogin/',views.facultyLogin,name="flogin"),
+    path('faculty/frequest',views.frequest,name="frequest"), 
+    path('faculty/fhistory',views.fhistory,name="fhistory"),
+    path('faculty/fstatus',views.fstatus,name="fstatus"),
+    path('faculty/fnotifications',views.fnotifications,name="fnotifications"),
     
 
     
