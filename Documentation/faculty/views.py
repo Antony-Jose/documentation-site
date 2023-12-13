@@ -10,6 +10,15 @@ from django.shortcuts import render
 @login_required(login_url='/facultyLogin')
 def faculty(request):
     return render(request, 'faculty/home.html')
+def frequest(request):
+    return render(request,'faculty/request.html')
+def fhistory(request):
+    return render(request,'faculty/history.html')
+def fnotifications(request):
+    return render(request,'faculty/notifications.html')
+def fstatus(request):
+    return render(request,'faculty/status.html')
+
 
 
 
