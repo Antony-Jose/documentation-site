@@ -1,6 +1,6 @@
 
 from django.contrib.auth.decorators import login_required
-
+from .models import mfrequest
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render
 
@@ -11,6 +11,12 @@ from django.shortcuts import render
 def faculty(request):
     return render(request, 'faculty/home.html')
 def frequest(request):
+    if request.method == 'POST':
+        semes = request.POST.get('sem')
+        subject = request.POST.get('subject')
+        body = request.POST.get('body')
+        print('subject is ',semes)
+        mfrequest(sem=semes,subject=subject,body=body).save()
     return render(request,'faculty/request.html')
 def fhistory(request):
     return render(request,'faculty/history.html')
@@ -39,3 +45,7 @@ def facultyLogin(request):
             return render(request, 'faculty/login.html', {'error_message': 'Invalid username or password'})
 
     return render(request, 'faculty/login.html')
+
+
+
+

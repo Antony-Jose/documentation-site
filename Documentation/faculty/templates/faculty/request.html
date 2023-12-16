@@ -52,6 +52,8 @@
 
                 <div class="div1">
 
+            <form action="{% url 'frequest' %}" method="post">
+            {% csrf_token %}
                     <div >
                        <p style="font-size: 15px;"></p> Department</p>
                     </div>
@@ -65,35 +67,34 @@
                     </div>
 
                     <div>
-                        <label for="myInput"></label>
-                        <input class="sem" type="text" id="sem" name="myInput">
+                        <label for="sem">sem</label>
+                        <input class="sem" type="text" id="sem" name="sem">
 
                     </div>
                 </div>
-                <div>
+                <!--<div>
                     <p style="font-size: 15px;">date:</p>    
                 </div>
                 <div>
-                 <label for="datePicker"></label>
-  <input type="date" id="datePicker" name="selectedDate" class="date-picker">
-                </div>
+                    <label for="datePicker"></label>
+                    <input type="date" id="datePicker" name="selectedDate" class="date-picker">
+                </div> -->
                 <div>
-                    <p style="font-size: 15px;">Subject:</p>
-                </div>
-                <div>
-                    <label for="myInput"></label>
-                    <input class="myInput" type="text" id="myInput" name="myInput">
+                    <label for="subject" style="font-size: 15px;">Subject:</label>
+                
+                    <input class="myInput" type="text" id="myInput" name="subject">
                 </div>
                 <div>
                     <p style="font-size:15px ;">Body</p>
                 </div>
                 <div class="input-body">
-                    <label for="myInput"></label>
-                    <textarea style="border: 2px solid black;border-radius: 10px; " class="input-body" id="multilineInput" name="multilineInput" rows="4" cols="50"></textarea>                </div>
+                    <label for="body">body</label>
+                    <textarea style="border: 2px solid black;border-radius: 10px; " class="input-body" id="multilineInput" name="body" rows="4" cols="50"></textarea>   
+                </div>
 
            </div>
            <div>
-            <form>
+            
                
             
                 <input type="submit" value="Submit" class="submit-button">
