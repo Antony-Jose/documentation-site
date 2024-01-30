@@ -30,11 +30,12 @@
                     <img src="{% static 'images/hod.png' %}" alt="">
                 </div>
             </div>
-            <div class="box"><p>REQUEST</p></div>
-            <div class="box"><p>NOTIFICATIONS</p></div>
+            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)"><p>HOME</p></a></div>
+            <div class="box"><a href="{% url 'hhistory' %}"><p>HISTORY</p></a></div>
+            <div class="box"><a href="{% url 'hnotifications' %}"><p>NOTIFICATIONS</p></a></div>
         </div>
         <div class="right">
-            <div class="right-sub"><p class="main">Dr. VINCE PAUL A</p></div>
+            <div class="right-sub"><p class="main">{{ user.get_username }}</p></div>
             <div><p class="sub">Head Of Department , CSE Department</p></div>
         </div>
     </div>

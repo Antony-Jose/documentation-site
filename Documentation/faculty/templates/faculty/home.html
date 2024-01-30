@@ -16,10 +16,10 @@
         <div id="currentDate"></div>
       </div>
       <div class="images">
-      <img 
+      <a href="{% url 'flogout' %}"><img 
         src="{% static 'images/powerLoginButton.png' %}"
         alt=""
-      />
+      /></a>
         </div>
     </div>
 
@@ -38,7 +38,7 @@
             
         </div>
         <div class="right">
-            <div class="right-sub"><p class="main">BHAGYASREE P V</p></div>
+            <div class="right-sub"><p class="main">{{ user.get_username }}</p></div>
             <div><p class="sub">Assistant Professor , CSE Department</p></div>
         </div>
     </div>

@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login
+from faculty.models import mfrequest
 
 # Create your views here.
 @login_required(login_url='/HODLogin')
@@ -11,7 +12,13 @@ def approved(request):
     return render(request, 'HOD/approved.html')
 def rejected(request):
     return render(request, 'HOD/rejected.html')
+def hhistory(request):
+    return render(request, 'HOD/history.html')
 
+def hnotifications(request):
+    reciver = request.user
+    all_status = mfrequest.objects.filter(reciver=reciver)
+    return render(request, 'HOD/notifications.html',{'status': all_status})
 
 def HODLogin(request):
     if request.method == 'POST':

@@ -9,7 +9,6 @@ urlpatterns = [
     path('faculty/fhistory',views.fhistory,name="fhistory"),
     path('faculty/fstatus',views.fstatus,name="fstatus"),
     path('faculty/fnotifications',views.fnotifications,name="fnotifications"),
-    
-
-    
+    path('faculty/fdownload',views.fdownload,name="fdownload"),
+    path('facultyLogout',views.flogout,name="flogout")
 ]

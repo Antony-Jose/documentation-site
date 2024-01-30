@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title>NOTIFICATIONS</title>
+    <title>HOME PAGE</title>
   </head>
   <body>
     <div class="your-div">
@@ -27,24 +27,20 @@
         <div class="left">
             <div class="profile">
                 <div class="div-img" >
-                    <img src="{% static 'images/profile.png' %}" alt="">
+                    <img src="{% static 'images/hod.png' %}" alt="">
                 </div>
             </div>
-            <div class="box"><a href="{% url 'fhome' %}"><p>HOME</p></a></div>
-            <div class="box"><a href="{% url 'fstatus' %}"><p>STATUS</p></a></div>
-            <div class="box"><a href="{% url 'frequest' %}"><p>REQUEST</p></a></div>
-            <div class="box"><a href="{% url 'fhistory' %}"><p>HISTORY</p></a></div>
-            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)"><p>NOTIFICATIONS</p></div>
+            
+            <div class="box"><a href="{% url 'hhome' %}"><p>HOME</p></a></div>
+            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)"><p>HISTORY</p></div>
+            <div class="box"><a href="{% url 'hnotifications' %}"><p>NOTIFICATIONS</p></a></div>
             
         </div>
         <div class="right">
-            <div class="right-sub"><p class="main">BHAGYASREE P V</p></div>
-            <div><p class="sub">Assistant Professor      , CSE Department</p></div>
+            <div class="right-sub"><p class="main">{{ user.get_username }}</p></div>
+            <div><p class="sub">Head Of Department , CSE Department</p></div>
         </div>
     </div>
-    {% for stat in status %}
-      <li>{{ stat.subject }}</li>
-    {% endfor%}
   </body>
 
 
