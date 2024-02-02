@@ -20,10 +20,15 @@ def faculty(request):
 def frequest(request):
     if request.method == 'POST':
         sender = request.user
-        departmentName = User.groups.values__list('name',flat=True).first()
+        print(sender)
+        groups = sender.groups.all()
+        departmentName = groups.first().name if groups.exists() else None
+        #departmentName = User.groups.('name',flat=True).first()
+        print(departmentName)
         hod_users=User.objects.filter(groups__name='HOD')
-
-        reciver = hod_users.filter(groups__name=departmentName)
+        print(hod_users)
+        reciver = hod_users.filter(groups__name=departmentName).first()
+        print(reciver)
         semes = request.POST["sem"] # request.POST.get('sem')
         subject = request.POST.get('subject')
         body = request.POST.get('body')

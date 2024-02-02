@@ -7,7 +7,7 @@ from django.contrib.auth.models import User,AbstractUser,Group
 
 class mfrequest(models.Model):
     sender = models.ForeignKey(User, on_delete=models.CASCADE,blank=True,null=True)
-    reciver = models.ForeignKey(Group.objects.get(name='HOD'), on_delete=models.CASCADE,blank=True,null=True)
+    reciver = models.ForeignKey(User, on_delete=models.CASCADE, related_name='HOD',blank=True,null=True)
     sem = models.CharField(max_length=100)
     subject = models.CharField(max_length=100)
     body = models.TextField()
