@@ -39,12 +39,20 @@
         </div>
         <div class="right">
             <div class="right-sub"><p class="main">BHAGYASREE P V</p></div>
-            <div><p class="sub">Assistant Professor      , CSE Department</p></div>
+            <div><p class="sub">Assistant Professor , CSE Department</p></div>
         </div>
+        <br>
+      
     </div>
-    {% for stat in status %}
-      <li>{{ stat.subject }}</li>
-    {% endfor%}
+      {% for stat in status %}
+        <div class="right">
+            <div class="right-sub"><p class="main">{{ stat.subject }}</p></div>
+            <div><p class="sub">{{ stat.body }}</p></div>
+        </div>
+        <br>
+      {% endfor%}
+    
+      
   </body>
 
 
