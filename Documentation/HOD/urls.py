@@ -9,5 +9,7 @@ urlpatterns = [
     path('HOD/history',views.hhistory,name="hhistory"),
     path('HOD/notifications',views.hnotifications,name="hnotifications"),
 
+    hlogout
+
     
 ]
