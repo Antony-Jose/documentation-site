@@ -10,39 +10,57 @@
   </head>
   <body>
     <div class="your-div">
-      <!-- Your content goes here -->
       <div class="hai">
         <p class="christ">CHRIST COLLEGE OF ENGINEERING, IRINJALAKUDA</p>
         <div id="currentDate"></div>
       </div>
       <div class="images">
-      <img 
-        src="{% static 'images/powerLoginButton.png' %}"
-        alt=""
-      />
-        </div>
+        <img src="{% static 'images/powerLoginButton.png' %}"/>
+      </div>
     </div>
 
     <div class="content">
-        <div class="left">
-            <div class="profile">
-                <div class="div-img" >
-                    <img src="{% static 'images/hod.png' %}" alt="">
-                </div>
+      <div class="left">
+        <div class="profile">
+          <div class="div-img">
+            <img src="{% static 'images/hod.png' %}" alt="">
+          </div>
+        </div>
+        <div class="box">
+          <a href="{% url 'hhome' %}"><p>HOME</p></a>
+        </div>
+        <div class="box">
+          <a href="{% url 'hhistory' %}"><p>HISTORY</p></a>
+        </div>
+        <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)">
+          <p>NOTIFICATIONS</p>
+        </div>
+      </div>
+
+      <div class="right">
+
+        <div class="right-sub">
+          <p class="main">{{ user.get_username }} <br>Head Of Department , CSE Department</p>
+        </div>
+
+        <div class="not">
+            <div style="font-family: Arial, Helvetica, sans-serif; display: flex; justify-content: space-between; width: 100%;">
+              <p>subdet...</p>
             </div>
-            <div class="box"><a href="{% url 'hhome' %}"><p>HOME</p></a></div>
-            <div class="box" ><a href="{% url 'hhistory' %}"><p>HISTORY</p></a></div>
-            <div class="box" style="background-color: #271241; color: rgb(255, 255, 255)"><p>NOTIFICATIONS</p></div>
+        </div>
+        {% for stat in status %}
+          <div class="not">
             
-        </div>
-        <div class="right">
-            <div class="right-sub"><p class="main">{{ user.get_username }}</p></div>
-            <div><p class="sub">Head Of Department , CSE Department
-            {% for stat in status %}
-              <li>{{ stat.subject }}</li>
-            {% endfor%}<
-            </p>/div>
-        </div>
+            <div style="font-family: Arial, Helvetica, sans-serif; display: flex; justify-content: space-between; width: 100%;">
+              <a href="{{stat.body}}"><p>{{ stat.subject }}...</p></a>
+              
+              <div class="upload-container">
+                <p><span id="uploadDate"></span></p>
+              </div>
+            </div>
+          </div>
+        {% endfor%}
+      </div>
     </div>
   </body>
 
