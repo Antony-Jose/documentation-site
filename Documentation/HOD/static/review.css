@@ -1,0 +1,260 @@
+*{
+    padding: 0;
+  }
+  body {
+      margin: 0;
+      padding: 0;
+    }
+  
+    .your-div {
+      background-color:#190C2A;
+      width: 100%;
+      padding: 10px 0;
+      height: 56px;
+      display:flex;
+      align-items: center;
+      justify-content: space-between;
+       /* Align items to the right */
+  
+  
+  
+    }
+  
+    .hai{
+      
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px;
+    }
+    .christ{
+      color: #FEFEFE;
+      font-family: Encode Sans Semi Condensed;
+      
+    }
+  
+    /* white-power-button-icon-isolated-on-transparent-vector-25548948-removebg-preview 1 */
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+  
+    }
+   .images{
+    width: 38px;
+    height: 44px;
+    margin-right: 5px;
+   }
+  
+  
+  #currentDate {
+  
+      height: 49px;
+      top: 13px;
+      left: 1052px;
+      font-family: Encode Sans Semi Condensed;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 50px;
+      letter-spacing: 0em;
+      color: #FEFEFE;
+  }
+  .profile{
+      width: 284px;
+      height: 243px;
+      top: 56px;
+  border-radius: 0px, 0px, 10px, 0px;
+  border: 1px;
+  background: -moz-linear-gradient(0deg, #41208B, #41208B);
+  
+  
+  
+  
+  }
+  .content{
+    display: flex;
+  
+  
+  }
+  .left{
+  width: 15%;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  
+  }
+  .right{
+    width:100%;
+    height:100%;
+  
+    border-left:0ch ;
+  
+  }
+  
+  .profile{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    width: 100%;
+    background-color: #7654C2;
+    box-sizing: border-box;   
+    border:solid black;
+    border-radius: 10px;
+  }
+  
+  .div-img{
+    height: 100px;
+    width: 100px;
+    
+   
+  }
+  .right-sub{
+    display: flex;
+    flex-direction: column;
+    height: 40px;
+  
+  }
+  .main{
+    margin-left: 20px;
+    font-family:Encode Sans Semi Condensed;
+    font-size: 25px;
+    font: bolder;
+  
+  }
+  .sub{
+    margin-left: 20px;
+    font-family: Encode Sans Semi Condensed;
+  }
+  
+  .box{
+  
+  width: 100%;
+  border-radius:10px;
+  border:solid black;
+  display: flex;
+  justify-content: center;
+  border-top: 0px;
+  
+  
+  }
+  .right{
+      padding-top: 0px;
+      padding-left: 50px;
+  }
+  .r1{
+    font-weight: bold; 
+    font-size: 22px;
+  }
+  
+  .r3{
+     border: solid black;
+     border-radius: 10px;
+     width: 200px;
+      border-width: 2px;
+      padding-left: 4px;
+      height:40px ;
+  
+  }
+  .div1{
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .div2{
+      width: 600px;
+      display: flex;
+      justify-content: space-between;
+       
+  }
+  .date-picker{
+      border: 2px solid black;
+      border-radius: 8px;
+      height: 40px;
+      width :max-content;
+      align-items: center;
+      justify-content:space-around;
+      text-align: center;
+      
+  }
+  .myInput{
+      border: 2px solid black;
+      border-radius: 8px;
+      height: 30px;  
+  }
+  .Input-body{
+      border: 2px solid black;
+      border-radius: 5px;
+      height: 150px; 
+      width: 35%; 
+  }
+  .sem{
+      border: 2px solid black;
+      border-radius: 10px;
+      height: 40px; 
+  }
+  
+  .submit-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:#8b5acc;
+    color: #fff;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .revert {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:#f3fb00;
+    color: #fff;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+  }  
+  .revert:hover{
+    background-color: #000000;
+  }
+  .approve {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:#36fb00;
+    color: #fff;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+  }  
+  .approve:hover{
+    background-color: #000000;
+  }
+  .reject {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color:#ff1515;
+    color: #fff;
+    border: solid black;
+    border-width: 2px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .reject:hover{
+    background-color: #000000;
+  }
+
+
+  
+    
+    .submit-button:hover {
+      background-color: #000000;
+    }

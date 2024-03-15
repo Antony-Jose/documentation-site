@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from faculty.models import mfrequest
 
 # Create your views here.
@@ -37,3 +37,10 @@ def HODLogin(request):
             return render(request, 'HOD/login.html', {'error_message': 'Invalid username or password'})
  
     return render(request, 'HOD/login.html')
+
+def hlogout(request):
+    logout(request) 
+    return HODLogin(request)
+
+def HodViewer(request):
+    return render(request,'HOD/review.html')
