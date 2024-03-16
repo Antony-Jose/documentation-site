@@ -1,0 +1,11 @@
+def generate_report(context):
+    name = context['name']
+    order_id = context['order_id']
+    # Create your report elements here, using string formatting
+    c = canvas.Canvas('pdf.pdf')
+    c.drawString(100, 100, f"Customer Name: {name}")
+    c.drawString(100, 80, f"Order ID: {order_id}")
+    c.drawString(100, 200, "Hello world.")
+    # ... (add more elements)
+    c.save()
+    return c.save()

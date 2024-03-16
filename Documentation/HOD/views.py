@@ -35,12 +35,12 @@ def HODLogin(request):
         else:
             # Invalid login credentials
             return render(request, 'HOD/login.html', {'error_message': 'Invalid username or password'})
- 
     return render(request, 'HOD/login.html')
 
 def hlogout(request):
     logout(request) 
     return HODLogin(request)
 
-def HodViewer(request):
-    return render(request,'HOD/review.html')
+def HodViewer(request,object_id):
+    object = mfrequest.objects.get(pk=object_id)
+    return render(request,'HOD/review.html',{'stat':object})

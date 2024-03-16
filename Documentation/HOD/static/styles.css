@@ -11,8 +11,7 @@ body {
     display:flex;
     align-items: center;
     justify-content: space-between;
-     /* Align items to the right */
-
+    
 
 
   }
@@ -64,10 +63,6 @@ body {
 border-radius: 0px, 0px, 10px, 0px;
 border: 1px;
 background: -moz-linear-gradient(0deg, #41208B, #41208B);
-
-
-
-
 }
 .content{
   display: flex;
@@ -82,21 +77,6 @@ flex-direction: column;
 align-items: center;
 
 
-}
-.right {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height:220%;
-  box-sizing: border-box;
-  border: solid black;
-  border-start-end-radius: 20px;
-  border-start-start-radius: 20px;
-  border-end-start-radius: 20px;
-  border-end-end-radius: 20px;
-  background-color: #7654c2;
-  margin-left: 10px;
-  
 }
 
 .profile{
@@ -117,13 +97,7 @@ align-items: center;
   
  
 }
-.right-sub {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  margin-bottom: 10px;
-  margin-left: 10px;
-}
+
 .main{
   margin-left: 20px;
   font-family:Encode Sans Semi Condensed;
@@ -131,10 +105,7 @@ align-items: center;
   font: bolder;
 
 }
-.sub{
-  margin-left: 20px;
-  font-family: Encode Sans Semi Condensed;
-}
+
 
 .box{
 
@@ -147,14 +118,47 @@ border-top: 0px;
 
 
 }
-.not{
-  height: 100%;
-  width: 100%;
+
+.right {
   display: flex;
+  flex-direction: column;
+  width: 100%;
+  height:100%;
+  box-sizing: border-box;
+  border: solid black;
+  border-start-end-radius: 20px;
+  border-start-start-radius: 20px;
+  border-end-start-radius: 20px;
+  border-end-end-radius: 20px;
+  background-color: #7654c2;
+  
+  
+}
+
+.sub {
+  
+  height: 100%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  font-family: Encode Sans Semi Condensed;
+
+  /* box-sizing: border-box;
+  border: solid black;
+  border-width: 40px;
+  border-start-end-radius: 20px;
+  border-start-start-radius: 20px;
+  border-end-start-radius: 20px;
+  border-end-end-radius: 20px; */
+}
+.not{
+  height: 100px;
+  width: 100px;
+  
   align-items: center;
   margin-top: 100px;
   padding-left: 20px;
   margin-bottom:10 ;
+  /*
   box-sizing: border-box;
   border: solid black;
   border-width: 40px;
@@ -162,5 +166,5 @@ border-top: 0px;
   border-start-start-radius: 20px;
   border-end-start-radius: 20px;
   border-end-end-radius: 20px;
-  
+  */
 }

@@ -1,10 +1,10 @@
-{%  %}
+{% load static  %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="review.css" />
+    <link rel="stylesheet" href="{% static 'review.css' %}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>REQUEST</title>
@@ -50,7 +50,7 @@
                     <p style="font-size: 15px;">FROM</p>
                 </div>
                 <div class="r3">
-                    <p>Bhagyasree P V</p>
+                    <p>{{ stat.sender }}</p>
                 </div>
                 <span></span>
                 <div class="div1">
@@ -58,13 +58,13 @@
                     <div>
                         <p style="font-size: 15px;"></p> Department</p>
                         <div class="r3">
-                            <p>CSE</p>
+                            <p>{{ stat.sender }}</p>
                         </div>
                     </div>
                     <div>
                         <p style="margin-right: 110px;">Semester</p>
                         <div class="sem">
-                            <p> .... </p>
+                            <p>{{ stat.sem }}</p>
                         </div>
                     </div>
                 </div>
@@ -88,9 +88,14 @@
                     <p style="font-size: 15px;">Subject:</p>
                 </div>
                 <div class="date-picker">
-                    <p style="margin-left: 10px; margin-right:10px"> NIL </p>
+                    <p style="margin-left: 10px; margin-right:10px"> {{ stat.subject }} </p>
                 </div>
-                
+                 <div>
+                    <p style="font-size: 15px;">Body:</p>
+                </div>
+                <div class="date-picker">
+                    <p style="margin-left: 10px; margin-right:10px"> {{ stat.body }} </p>
+                </div>
                 <input type="button" onclick="" value="Approve" class="approve"> <input type="button" value="Revert" class="revert"> <input type="button" value="Reject" class="reject">
                 <div>
                     <p style="font-size:15px ;">Remarks</p>

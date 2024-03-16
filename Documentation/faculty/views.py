@@ -4,10 +4,18 @@ from .models import mfrequest
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render
 from django.contrib.auth.models import User,Group
+from django.http import HttpResponse
 
 import io
 from django.http import FileResponse
-from reportlab.pdfgen import canvas
+from reportlab.pdfgen import canvas #working
+"""
+from django.template.loader import render_to_string
+from weasyprint.html import render_pdf #some dependencies missing
+"""
+
+
+
 
 
 
@@ -45,31 +53,6 @@ def fnotifications(request):
 
 def fstatus(request):
     return render(request,'faculty/status.html')
-def fdownload(request):
-    # Create a file-like buffer to receive PDF data.
-    buffer = io.BytesIO()
-
-    # Create the PDF object, using the buffer as its "file."
-    p = canvas.Canvas(buffer)
-
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 10, "Hello world.")
-
-    # Close the PDF object cleanly, and we're done.
-    p.showPage()
-    p.save()
-
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
-    buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
-    
-
-
-
-
-
 
 
 
@@ -95,3 +78,61 @@ def facultyLogin(request):
             return render(request, 'faculty/login.html', {'error_message': 'Invalid username or password'})
 
     return render(request, 'faculty/login.html')
+
+def fnotifications(request):
+    reciver = request.user
+    all_status = mfrequest.objects.filter(reciver=reciver)
+    return render(request, 'HOD/notifications.html',{'status': all_status})
+
+def fViewer(request,object_id):
+    object = mfrequest.objects.get(pk=object_id)
+    return render(request,'HOD/review.html',{'stat':object})
+
+
+
+
+"""
+def generate_pdf(request):
+    template_name = 'pdf.html'
+    context = {'data': request.user}
+    html_content = render_to_string(template_name, context)
+    pdf_response = render_pdf(html_content)
+    return HttpResponse(pdf_response, content_type='application/pdf')
+"""
+def fdownload(request):
+    reciver = request.user
+    all_status = mfrequest.objects.filter(reciver=reciver)
+    w=00
+    # Create a file-like buffer to receive PDF data.
+    buffer = io.BytesIO()
+    # Create the PDF object, using the buffer as its "file."
+    p = canvas.Canvas(buffer)
+    # Draw things on the PDF. Here's where the PDF generation happens.
+    # See the ReportLab documentation for the full list of functionality.
+    p.drawString(100, 500, "Hello world.")
+    p.drawString(100, 400, "{% w %}")
+    p.drawString(100, 300, "Hello world.")
+    p.drawString(100, 200, "Hello world.")
+    # Close the PDF object cleanly, and we're done.
+    p.showPage()
+    p.save()
+    # FileResponse sets the Content-Disposition header so that browsers
+    # present the option to save the file.
+    buffer.seek(0)
+    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+    
+
+
+# Django view
+from django.template import loader
+
+
+def generate_pdf(request):
+    context = {'name': request.user, 'order_id': 12345}
+    template = loader.get_template('faculty/pdf.html')
+    pdf = generate_report(context)  # Call your Reportlab function here
+    response = HttpResponse(pdf, content_type='application/pdf')
+    return response
+
+
+    
