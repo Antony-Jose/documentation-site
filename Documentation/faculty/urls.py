@@ -9,7 +9,8 @@ urlpatterns = [
     path('faculty/fhistory',views.fhistory,name="fhistory"),
     path('faculty/fstatus',views.fstatus,name="fstatus"),
     path('faculty/fnotifications',views.fnotifications,name="fnotifications"),
-    path('faculty/fdownload',views.generate_pdf,name="fdownload"),
+    path('faculty/fdownload/<int:object_id>/',views.fdownload,name="fdownload"),
     path('facultyLogout',views.flogout,name="flogout"),
     path('faculty/pdf',views.fdownload,name="pdf"),
+    path('faculty/review/<int:object_id>/',views.fViewer,name="fviewer"),
 ]

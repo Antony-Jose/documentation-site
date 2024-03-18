@@ -79,14 +79,11 @@ def facultyLogin(request):
 
     return render(request, 'faculty/login.html')
 
-def fnotifications(request):
-    reciver = request.user
-    all_status = mfrequest.objects.filter(reciver=reciver)
-    return render(request, 'HOD/notifications.html',{'status': all_status})
+
 
 def fViewer(request,object_id):
     object = mfrequest.objects.get(pk=object_id)
-    return render(request,'HOD/review.html',{'stat':object})
+    return render(request,'faculty/review.html',{'stat':object})
 
 
 
@@ -99,20 +96,20 @@ def generate_pdf(request):
     pdf_response = render_pdf(html_content)
     return HttpResponse(pdf_response, content_type='application/pdf')
 """
-def fdownload(request):
+def fdownload(request,object_id):
     reciver = request.user
-    all_status = mfrequest.objects.filter(reciver=reciver)
-    w=00
+    obj = mfrequest.objects.get(pk=object_id)
+    body = obj.body
     # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
     # Create the PDF object, using the buffer as its "file."
     p = canvas.Canvas(buffer)
     # Draw things on the PDF. Here's where the PDF generation happens.
     # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 500, "Hello world.")
-    p.drawString(100, 400, "{% w %}")
-    p.drawString(100, 300, "Hello world.")
-    p.drawString(100, 200, "Hello world.")
+    p.drawString(100, 500, f"{request.user}")
+    p.drawString(100, 400, f"{ obj.reciver }")
+    p.drawString(100, 300, f"{ obj.sem }")
+    p.drawString(100, 200, f"{ obj.body }")
     # Close the PDF object cleanly, and we're done.
     p.showPage()
     p.save()
@@ -125,14 +122,29 @@ def fdownload(request):
 
 # Django view
 from django.template import loader
+from django.core.files.base import ContentFile
 
-
-def generate_pdf(request):
-    context = {'name': request.user, 'order_id': 12345}
-    template = loader.get_template('faculty/pdf.html')
+def generate_pdf(request,object_id):
+    object = mfrequest.objects.get(pk=object_id)
+    context = {'from': request.user, }
+    loader.get_template('faculty/pdf.html')
     pdf = generate_report(context)  # Call your Reportlab function here
-    response = HttpResponse(pdf, content_type='application/pdf')
+    response = FileResponse(ContentFile(pdf), content_type='application/pdf')
+    #response = HttpResponse(pdf, content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="pdf.pdf"'
     return response
 
-
+def generate_report(context):
+    faculty = context['from']
+    order_id = context['order_id']
+    c = canvas.Canvas('letter.pdf')
     
+    c.drawString(100, 100, f"Customer Name: {faculty}")
+    c.drawString(100, 80, f"Order ID: {order_id}")
+    c.drawString(100, 200, " H e l  l  o world.")
+    # ... (add more elements)
+    c.save()
+    with open("letter.pdf", 'rb') as f:
+      pdf_data = f.read()
+    return pdf_data  # Return the PDF data as bytes
+

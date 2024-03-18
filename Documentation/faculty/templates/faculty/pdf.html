@@ -1,11 +1,60 @@
-def generate_report(context):
-    name = context['name']
-    order_id = context['order_id']
-    # Create your report elements here, using string formatting
-    c = canvas.Canvas('pdf.pdf')
-    c.drawString(100, 100, f"Customer Name: {name}")
-    c.drawString(100, 80, f"Order ID: {order_id}")
-    c.drawString(100, 200, "Hello world.")
-    # ... (add more elements)
-    c.save()
-    return c.save()
+{% load static %}
+from reportlab.pdfgen import canvas
+from reportlab.lib.units import inch
+
+def generate_invoice(context):
+  """
+  Generates a PDF invoice using context data.
+  """
+  c = canvas.Canvas("invoice.pdf")
+
+  # Company Information (static)
+  company_name = "Acme Inc."
+  company_address = "123 Main Street\nAnytown, CA 12345"
+  c.setFont("Helvetica", 12)
+  c.drawString(inch, 7.5 * inch, company_name)
+  c.drawString(inch, 7.2 * inch, company_address)
+
+  # Invoice Details (dynamic)
+  invoice_number = context["invoice_number"]
+  invoice_date = context["invoice_date"]
+  c.drawString(6 * inch, 7.5 * inch, f"Invoice Number: {invoice_number}")
+  c.drawString(6 * inch, 7.2 * inch, f"Invoice Date: {invoice_date}")
+
+  # Customer Information (dynamic)
+  customer_name = context["customer_name"]
+  customer_address = context["customer_address"]
+  c.setFont("Helvetica-Bold", 12)
+  c.drawString(inch, 6.5 * inch, "Bill To:")
+  c.setFont("Helvetica", 11)
+  c.drawString(2 * inch, 6.5 * inch, customer_name)
+  c.drawString(2 * inch, 6.2 * inch, customer_address)
+
+  # Line Items Table Header (static)
+  c.setFont("Helvetica-Bold", 11)
+  c.drawString(inch, 5.5 * inch, "Description")
+  c.drawString(3.5 * inch, 5.5 * inch, "Qty")
+  c.drawString(5 * inch, 5.5 * inch, "Unit Price")
+  c.drawString(6.5 * inch, 5.5 * inch, "Amount")
+  c.setStrokeColor("#cccccc")
+  c.line(inch, 5.4 * inch, 7 * inch, 5.4 * inch)
+
+  # Line Items (dynamic - loop through data)
+  line_items = context["line_items"]
+  y_pos = 5.2 * inch
+  for item in line_items:
+      c.setFont("Helvetica", 10)
+      c.drawString(inch, y_pos, item["description"])
+      c.drawString(3.5 * inch, y_pos, str(item["quantity"]))
+      c.drawString(5 * inch, y_pos, f"{item['unit_price']:.2f}")
+      c.drawRightString(6.5 * inch, y_pos, f"{item['quantity'] * item['unit_price']:.2f}")
+      y_pos -= 0.2 * inch
+
+  # Total Section (dynamic)
+  total_amount = context["total_amount"]
+  c.setFont("Helvetica-Bold", 12)
+  c.drawString(5 * inch, 1.5 * inch, "Total:")
+  c.drawRightString(6.5 * inch, 1.5 * inch, f"{total_amount:.2f}")
+
+  c.save()
+  return c.getvalue()

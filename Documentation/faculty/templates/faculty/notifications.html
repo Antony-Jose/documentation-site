@@ -44,14 +44,19 @@
         <br>
       
     </div>
+
+      
       {% for stat in status %}
-        <div class="right">
-            <div class="right-sub"><p class="main">{{ stat.subject }}</p></div>
-            <div><p class="sub">{{ stat.body }}</p></div>
-        </div>
-        <br>
-      {% endfor%}
-    
+          <div class="right not">
+            <div style="font-family: Arial, Helvetica, sans-serif; display: flex; justify-content: space-between; width: 100%;">
+              <a href="{% url 'fviewer' stat.id %}"><p style="padding-left: 10px;">{{ stat.subject }}</p></a>
+              
+              <div class="upload-container">
+                <p><span id="uploadDate"></span></p>
+              </div>
+            </div>
+          </div>
+        {% endfor%}
       
   </body>
 
