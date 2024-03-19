@@ -64,11 +64,11 @@ border-radius: 0px, 0px, 10px, 0px;
 border: 1px;
 background: -moz-linear-gradient(0deg, #41208B, #41208B);
 }
-.content{
+/* .content{
   display: flex;
 
 
-}
+} */
 .left{
 width: 15%;
 height: 450px;

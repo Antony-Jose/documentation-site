@@ -26,22 +26,7 @@ from weasyprint.html import render_pdf #some dependencies missing
 def faculty(request):
     return render(request, 'faculty/home.html')
 def frequest(request):
-    if request.method == 'POST':
-        sender = request.user
-        print(sender)
-        groups = sender.groups.all()
-        departmentName = groups.first().name if groups.exists() else None
-        #departmentName = User.groups.('name',flat=True).first()
-        print(departmentName)
-        hod_users=User.objects.filter(groups__name='HOD')
-        print(hod_users)
-        reciver = hod_users.filter(groups__name=departmentName).first()
-        print(reciver)
-        semes = request.POST["sem"] # request.POST.get('sem')
-        subject = request.POST.get('subject')
-        body = request.POST.get('body')
-        print('subject is ',semes)
-        mfrequest(sender=sender,reciver=reciver,sem=semes,subject=subject,body=body).save()
+    
     return render(request,'faculty/request.html')
 def fhistory(request):
     return render(request,'faculty/history.html')
