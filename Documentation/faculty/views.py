@@ -9,7 +9,8 @@ from django.http import HttpResponse
 import io
 from django.http import FileResponse
 
-
+def home(request):
+    return render(request,'faculty/index.html')
 
 
 
