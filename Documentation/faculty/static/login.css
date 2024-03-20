@@ -1,0 +1,61 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: sans-serif;
+}
+body {
+
+    color: rgb(206, 198, 205);;
+    /* Gradient background starting from purple */
+    background: linear-gradient(to bottom right, #550d55, #d986dd);
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .first{
+    box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.1);
+        width: 350px; /* Adjust width as needed */
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(159, 67, 153);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    align-items: center;
+    border-radius: 20px;
+    font-size: 25px;
+
+
+
+}
+.round {
+    border-radius: 10px; /* Adjust the border radius as needed */
+    border: 1px solid #cccccc; /* Optional: Add border for input */
+    padding: 5px 10px; /* Optional: Add padding for input */
+    border: none;
+    background-color: rgba(0, 0, 0, 0); /* Fully transparent background color */
+    color: rgb(206, 198, 205); /* Text color */
+    border: 1px solid #ccc; /* Border color */
+  }
+.login{
+    width: 100px;
+    height: 33px;
+    border-radius: 10px;
+    border: none;
+    /* padding: 10px 20px; Button padding */
+    border: 1px solid #ccc ; /* Remove button border */
+    /* border-radius: 5px; Button border radius */
+    cursor: pointer; /* Change cursor to pointer on hover */
+   /* Smooth transition for hover effect */
+   background-color: rgba(0,0,0,0);
+   color:  rgb(206, 198, 205);
+  }
+.round::placeholder{
+    color: rgb(206, 198, 205);
+}
+  
