@@ -8,18 +8,10 @@ from django.http import HttpResponse
 
 import io
 from django.http import FileResponse
-from reportlab.pdfgen import canvas #working
-"""
-from django.template.loader import render_to_string
-from weasyprint.html import render_pdf #some dependencies missing
-"""
 
 
 
 
-
-
-# Create your views here.
 
 
 @login_required(login_url='/facultyLogin')
@@ -86,30 +78,37 @@ def fViewer(request,object_id):
     return render(request,'faculty/review.html',{'stat':object})
 
 
+from reportlab.pdfgen import canvas #working
+from reportlab.lib.units import inch
+from reportlab.lib.pagesizes import A4,letter
+from reportlab.lib.styles import getSampleStyleSheet
 
 
-"""
-def generate_pdf(request):
-    template_name = 'pdf.html'
-    context = {'data': request.user}
-    html_content = render_to_string(template_name, context)
-    pdf_response = render_pdf(html_content)
-    return HttpResponse(pdf_response, content_type='application/pdf')
-"""
 def fdownload(request,object_id):
-    reciver = request.user
+    
+    sender = request.user
+    print(sender)
+    groups = sender.groups.all()
+    departmentName = groups.first().name if groups.exists() else None
     obj = mfrequest.objects.get(pk=object_id)
-    body = obj.body
-    # Create a file-like buffer to receive PDF data.
     buffer = io.BytesIO()
-    # Create the PDF object, using the buffer as its "file."
-    p = canvas.Canvas(buffer)
-    # Draw things on the PDF. Here's where the PDF generation happens.
-    # See the ReportLab documentation for the full list of functionality.
-    p.drawString(100, 500, f"{request.user}")
-    p.drawString(100, 400, f"{ obj.reciver }")
-    p.drawString(100, 300, f"{ obj.sem }")
+    p = canvas.Canvas(buffer,pagesize=A4)
+    p.translate(inch,inch)
+    p.setStrokeColorRGB(1,0,0)
+    p.setLineWidth(10)
+    p.line(0,8*inch,7*inch,8*inch)
+    p.drawImage('faculty\\static\\profile2.png',0.8*inch,7.3*inch)
+    p.setFillColor('green')
+    p.drawString(100, 725, f"From,")
+    p.drawString(125, 500, f"{request.user}")
+    p.drawString(125, 550, f"{departmentName}")
+    p.drawString(100, 525, f"To,")
+    p.drawString(128, 400, f"{ obj.reciver }")
+    p.drawString(125, 560, f"{departmentName}")
+    p.drawString(300, 300, f"Subject : { obj.subject }") 
+    p.drawString(300, 300, f"{ obj.sem }")
     p.drawString(100, 200, f"{ obj.body }")
+
     # Close the PDF object cleanly, and we're done.
     p.showPage()
     p.save()
@@ -119,32 +118,4 @@ def fdownload(request,object_id):
     return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
     
 
-
-# Django view
-from django.template import loader
-from django.core.files.base import ContentFile
-
-def generate_pdf(request,object_id):
-    object = mfrequest.objects.get(pk=object_id)
-    context = {'from': request.user, }
-    loader.get_template('faculty/pdf.html')
-    pdf = generate_report(context)  # Call your Reportlab function here
-    response = FileResponse(ContentFile(pdf), content_type='application/pdf')
-    #response = HttpResponse(pdf, content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="pdf.pdf"'
-    return response
-
-def generate_report(context):
-    faculty = context['from']
-    order_id = context['order_id']
-    c = canvas.Canvas('letter.pdf')
-    
-    c.drawString(100, 100, f"Customer Name: {faculty}")
-    c.drawString(100, 80, f"Order ID: {order_id}")
-    c.drawString(100, 200, " H e l  l  o world.")
-    # ... (add more elements)
-    c.save()
-    with open("letter.pdf", 'rb') as f:
-      pdf_data = f.read()
-    return pdf_data  # Return the PDF data as bytes
 
