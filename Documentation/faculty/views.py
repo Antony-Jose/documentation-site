@@ -19,7 +19,22 @@ def home(request):
 def faculty(request):
     return render(request, 'faculty/home.html')
 def frequest(request):
-    
+    if request.method == 'POST':
+        sender = request.user
+        print(sender)
+        groups = sender.groups.all()
+        departmentName = groups.first().name if groups.exists() else None
+        #departmentName = User.groups.('name',flat=True).first()
+        print(departmentName)
+        hod_users=User.objects.filter(groups__name='HOD')
+        print(hod_users)
+        reciver = hod_users.filter(groups__name=departmentName).first()
+        print(reciver)
+        semes = request.POST["sem"] # request.POST.get('sem')
+        subject = request.POST.get('subject')
+        body = request.POST.get('body')
+        print('subject is ',semes)
+        mfrequest(sender=sender,reciver=reciver,sem=semes,subject=subject,body=body).save()
     return render(request,'faculty/request.html')
 def fhistory(request):
     return render(request,'faculty/history.html')
@@ -67,7 +82,10 @@ def fViewer(request,object_id):
 from reportlab.pdfgen import canvas #working
 from reportlab.lib.units import inch
 from reportlab.lib.pagesizes import A4,letter
-from reportlab.lib.styles import getSampleStyleSheet
+
+
+from reportlab.lib import texts
+
 
 
 def fdownload(request,object_id):
@@ -80,6 +98,8 @@ def fdownload(request,object_id):
     buffer = io.BytesIO()
     p = canvas.Canvas(buffer,pagesize=A4)
     p.translate(inch,inch)
+    lbody=texts.Paragraph(obj.body,style=None)
+
     p.setStrokeColorRGB(1,0,0)
     p.setLineWidth(10)
     p.line(0,8*inch,7*inch,8*inch)
@@ -92,6 +112,7 @@ def fdownload(request,object_id):
     p.drawString(128, 400, f"{ obj.reciver }")
     p.drawString(125, 560, f"{departmentName}")
     p.drawString(300, 300, f"Subject : { obj.subject }") 
+    p.drawString(300, 300, lbody) 
     p.drawString(300, 300, f"{ obj.sem }")
     p.drawString(100, 200, f"{ obj.body }")
 

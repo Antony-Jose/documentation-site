@@ -174,11 +174,12 @@
   .date-picker{
       border: 2px solid black;
       border-radius: 8px;
-      height: 40px;
-      width :max-content;
-      align-items: center;
-      justify-content:space-around;
-      text-align: center;
+      height: fit-content;
+      width :90px;
+      align-items: left;
+      /*justify-content:space-around;*/
+      text-align: left;
+
       
   }
   .myInput{
