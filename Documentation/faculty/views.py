@@ -73,56 +73,54 @@ def facultyLogin(request):
     return render(request, 'faculty/login.html')
 
 
-
 def fViewer(request,object_id):
     object = mfrequest.objects.get(pk=object_id)
     return render(request,'faculty/review.html',{'stat':object})
 
 
-from reportlab.pdfgen import canvas #working
+import io
+from reportlab.pdfgen import canvas
 from reportlab.lib.units import inch
-from reportlab.lib.pagesizes import A4,letter
+from reportlab.lib.pagesizes import A4
+from reportlab.platypus import Paragraph
+from django.http import FileResponse
+from .models import mfrequest  # Assuming mfrequest is the model you're using
 
-
-from reportlab.lib import texts
-
-
-
-def fdownload(request,object_id):
-    
+def fdownload(request, object_id):
     sender = request.user
     print(sender)
     groups = sender.groups.all()
     departmentName = groups.first().name if groups.exists() else None
     obj = mfrequest.objects.get(pk=object_id)
     buffer = io.BytesIO()
-    p = canvas.Canvas(buffer,pagesize=A4)
-    p.translate(inch,inch)
-    lbody=texts.Paragraph(obj.body,style=None)
+    p = canvas.Canvas(buffer, pagesize=A4)
+    p.translate(inch, inch)
 
-    p.setStrokeColorRGB(1,0,0)
+    # Drawing lines and images
+    p.setStrokeColorRGB(1, 0, 0)
     p.setLineWidth(10)
-    p.line(0,8*inch,7*inch,8*inch)
-    p.drawImage('faculty\\static\\profile2.png',0.8*inch,7.3*inch)
+    p.line(0, 8*inch, 7*inch, 8*inch)
+    p.drawImage('faculty/static/profile2.png', 0.8*inch, 7.3*inch)
     p.setFillColor('green')
-    p.drawString(100, 725, f"From,")
-    p.drawString(125, 500, f"{request.user}")
-    p.drawString(125, 550, f"{departmentName}")
-    p.drawString(100, 525, f"To,")
-    p.drawString(128, 400, f"{ obj.reciver }")
-    p.drawString(125, 560, f"{departmentName}")
-    p.drawString(300, 300, f"Subject : { obj.subject }") 
-    p.drawString(300, 300, lbody) 
-    p.drawString(300, 300, f"{ obj.sem }")
-    p.drawString(100, 200, f"{ obj.body }")
+    p.drawString(100, 725, "From,")
+    p.drawString(125, 500, str(request.user))
+    p.drawString(125, 550, str(departmentName))
+    p.drawString(100, 525, "To,")
+    p.drawString(128, 400, str(obj.reciver))
+    p.drawString(125, 560, str(departmentName))
+    p.drawString(300, 300, f"Subject: {obj.subject}")
+    p.drawString(300, 280, f"Semester: {obj.sem}")
 
-    # Close the PDF object cleanly, and we're done.
+    # Adding paragraph text
+    text = obj.body.replace('\n', '<br/>')
+    paragraph = Paragraph(text, style=None)  # Adjust properties
+    paragraph.wrapOn(p, 400, 300)  # Wrap the paragraph if needed
+    paragraph.drawOn(p, 100, 200)  # Draw the paragraph on the canvas
+
+    # Close the PDF object cleanly
     p.showPage()
     p.save()
-    # FileResponse sets the Content-Disposition header so that browsers
-    # present the option to save the file.
+
+    # FileResponse sets the Content-Disposition header so that browsers present the option to save the file
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
-    
-
-

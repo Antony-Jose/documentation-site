@@ -171,17 +171,15 @@
       justify-content: space-between;
        
   }
-  .date-picker{
-      border: 2px solid black;
-      border-radius: 8px;
-      height: fit-content;
-      width :90px;
-      align-items: left;
-      /*justify-content:space-around;*/
-      text-align: left;
-
-      
-  }
+.date-picker {
+    border: 2px solid black;
+    border-radius: 8px;
+    height: fit-content;
+    width: 900%;
+    align-items: left;
+    /*justify-content:space-around;*/
+    text-align: left;
+}
   .myInput{
       border: 2px solid black;
       border-radius: 8px;
