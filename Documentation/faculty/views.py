@@ -103,10 +103,10 @@ def fdownload(request, object_id):
     p.drawImage('faculty/static/profile2.png', 0.8*inch, 7.3*inch)
     p.setFillColor('green')
     p.drawString(100, 725, "From,")
-    p.drawString(125, 500, str(request.user))
+    p.drawString(125, 500, f" {sender.first_name} {sender.last_name}")
     p.drawString(125, 550, str(departmentName))
     p.drawString(100, 525, "To,")
-    p.drawString(128, 400, str(obj.reciver))
+    p.drawString(128, 400, f" {obj.reciver.first_name} {obj.reciver.last_name}")
     p.drawString(125, 560, str(departmentName))
     p.drawString(300, 300, f"Subject: {obj.subject}")
     p.drawString(300, 280, f"Semester: {obj.sem}")
@@ -124,3 +124,4 @@ def fdownload(request, object_id):
     # FileResponse sets the Content-Disposition header so that browsers present the option to save the file
     buffer.seek(0)
     return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+
