@@ -4,19 +4,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'login.css' %}">
+
     <title>Faculty Login</title>
 </head>
 <body>
-    <h2>Login</h2>
+    <span class="first">
+
+    <div class="text">
+    <h2>Login</h2><br>
     <form method="post" action="">
         {% csrf_token %}
         <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
-
+        <input type="text" name="username" required class="round" placeholder="name"><br>
+        <br>
         <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+        <input type="password" name="password" required class="round" placeholder="password"><br><br>
 
-        <input type="submit" value="Login">
+        <input type="submit" value="Login" class="login">
     </form>
+</div>
+</span>
 </body>
 </html>

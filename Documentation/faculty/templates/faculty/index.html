@@ -4,12 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'index.css' %}">
     <title>START</title>
 </head>
 <body>
-    choose faculty or hod<br>
-    <a href="{% url 'flogin' %}" target="_blank">Faculty</a> <br>
-    <a href="{% url 'hlogin' %}" target="_blank">HOD</a>
+    <span class="first">
+    <div class="text">
+    <p>Choose Faculty / HOD</p><br>
+    <a href="{% url 'flogin' %}" target="_blank" class="a1" class="button">Faculty</a> <br><br>
+    <a href="{% url 'hlogin' %}" target="_blank" class="a2" class="button">HOD</a>
+    </div>
+</span>
 </body>
 </html>
 
