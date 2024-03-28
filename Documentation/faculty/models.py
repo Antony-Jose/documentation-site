@@ -13,5 +13,7 @@ class mfrequest(models.Model):
     subject = models.CharField(max_length=100)
     body = models.TextField()
     checked = models.BooleanField(default=False)
-    permitted = models.BooleanField(default=False)
+    rejected = models.BooleanField(default=False)
+    approved = models.BooleanField(default=False)
+    reverted = models.BooleanField(default=False)
     remarks = models.TextField(default='NO REMARKS')

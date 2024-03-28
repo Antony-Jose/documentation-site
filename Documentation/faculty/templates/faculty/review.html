@@ -80,7 +80,15 @@
                         <p style="margin-right: 130px;">Status</p>
                         
                         <div class="date-picker">
-                            <p style="margin-left: 10px; margin-right:10px"> NIL </p>
+                            <p style="margin-left: 10px; margin-right:10px"> 
+                            {% if stat.approved == True %}
+                                Approved
+                            {% elif stat.rejected == True %}
+                                Rejected
+                            {% else %}
+                                Reverted
+                            {% endif %}
+                            </p>
                         </div>
                     </div>
                 </div>

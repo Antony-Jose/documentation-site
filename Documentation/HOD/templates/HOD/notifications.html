@@ -47,24 +47,22 @@
           </p>
         </div>
         {% for stat in status %}
+        {% if stat.checked == False %}
         <div class="right not">
           <div
             style="
               font-family: Arial, Helvetica, sans-serif;
               display: flex;
-              
               width: 100%;
-            "
-          >
-            title:<a href="{% url 'viewer' stat.id %}"
-              >{{ stat.subject }}</a
-            >
-
+            ">
+            title:<a href="{% url 'viewer' stat.id %}">{{ stat.subject }}</a>
+        
             <div class="upload-container">
               <p><span id="uploadDate"></span></p>
             </div>
           </div>
         </div>
+        {% endif %}
         {% endfor%}
       </div>
     </div>
