@@ -174,11 +174,11 @@
   .date-picker{
       border: 2px solid black;
       border-radius: 8px;
-      height: 40px;
-      width :max-content;
-      align-items: center;
-      justify-content:space-around;
-      text-align: center;
+      height: fit-content;
+      width :900%;
+      align-items: left;
+      
+      text-align: left;
       
   }
   .myInput{
@@ -234,9 +234,10 @@
     border-radius: 10px;
     cursor: pointer;
   }  
-  .approve:hover{
+  .approve:checked{
     background-color: #000000;
   }
+
   .reject {
     margin-top: 20px;
     padding: 10px 20px;
@@ -271,7 +272,7 @@
   padding: 20px 15px;
   box-shadow: 5px 5px 30px rgba(0,0,0,0.2);
 }
-.wrapper .option{
+.wrapper .approve{
   background: #fff;
   height: 100%;
   width: 100%;
@@ -285,14 +286,14 @@
   border: 2px solid lightgrey;
   transition: all 0.3s ease;
 }
-.wrapper .option .dot{
+.wrapper .approve .dot{
   height: 20px;
   width: 20px;
   background: #d9d9d9;
   border-radius: 50%;
   position: relative;
 }
-.wrapper .option .dot::before{
+.wrapper .approve .dot::before{
   position: absolute;
   content: "";
   top: 4px;
@@ -310,28 +311,28 @@ input[type="radio"]{
 }
 
 
- #option-1:checked:checked ~ .option-1,
+#approved:checked:checked ~ .approved,
 #option-2:checked:checked ~ .option-2,
 #option-3:checked:checked ~ .option-3{
   border-color: #0069d9;
   background: #0069d9;
 }
-#option-1:checked:checked ~ .option-1 .dot,
+#approved:checked:checked ~ .approved .dot,
 #option-2:checked:checked ~ .option-2 .dot,
 #option-3:checked:checked ~ .option-3 .dot{
   background: #fff;
 }
-#option-1:checked:checked ~ .option-1 .dot::before,
-#option-2:checked:checked ~ .option-2 .dot::before,
-#option-3:checked:checked ~ .option-3 .dot::before{
+#approved:checked:checked ~ .approved .evaluation::before,
+#option-2:checked:checked ~ .option-2 .evaluation::before,
+#option-3:checked:checked ~ .option-3 .evaluation::before{
   opacity: 1;
   transform: scale(1);
 }
-.wrapper .option span{
+.wrapper .approved span{
   font-size: 20px;
   color: #808080;
 }
-#option-1:checked:checked ~ .option-1 span,
+#approved:checked:checked ~ .approved span,
 #option-2:checked:checked ~ .option-2 span,
 #option-3:checked:checked ~ .option-3 span{
   color: #fff;

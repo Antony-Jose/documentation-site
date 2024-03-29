@@ -70,16 +70,16 @@
                 </div>
                 <div class="div1">
 
-                    <div>
+                    <div >
                         <p style="font-size: 15px;"></p> Date</p>
-                        <div class="date-picker">
+                        <div class="date-picker" style="height: fit-content;width:max-content; text-align:left; padding: 3px;">
                             <p style="margin-left: 10px; margin-right:10px"> Sent date </p>
                         </div>
                     </div>
                     <div>
                         <p style="margin-right: 130px;">Status</p>
                         
-                        <div class="date-picker">
+                        <div class="date-picker" style="height: fit-content;width:max-content; text-align:left; padding: 3px;">
                             <p style="margin-left: 10px; margin-right:10px"> NIL </p>
                         </div>
                     </div>
@@ -87,14 +87,15 @@
                 <div>
                     <p style="font-size: 15px;">Subject:</p>
                 </div>
-                <div class="date-picker">
+                <div class="date-picker" style="height: fit-content;width:max-content; text-align:left; padding: 3px;">
                     <p style="margin-left: 10px; margin-right:10px"> {{ stat.subject }} </p>
                 </div>
+                
                  <div>
                     <p style="font-size: 15px;">Body:</p>
                 </div>
-                <div class="date-picker">
-                    <p style="margin-left: 10px; margin-right:10px"> {{ stat.body }} </p>
+                <div class="date-picker" style="height: fit-content;width:max-content; text-align:left; padding: 3px;">
+                    <p > {{ stat.body|linebreaks }} </p>
                 </div>
                 <form action="{% url 'evaluate' stat.id %}" method="post">
                     {% csrf_token %}
@@ -102,17 +103,17 @@
                     <div>
                         
                         
-                        <input type="radio" id="approved" name="evaluation" value="approve" class="approve">
-                        <label for="approved">Approve</label>
+                        <input type="radio" id="approved" name="evaluation" value="approve" class="approve" >
+                        <label for="approved" class="approve">Approve</label>
 
                         <input type="radio" id="reject" name="evaluation" value="reject" class="reject">
-                        <label for="reject">Reject</label>
+                        <label for="reject" class="reject">Reject</label>
 
                         <input type="radio" id="revert" name="evaluation" value="revert" class="revert">
-                        <label for="revert"><span>Revert</span> </label><br>
+                        <label for="revert" class="revert"><span>Revert</span> </label><br>
 
                     </div>
-                    <input type="button" onclick="stat.approved=true" value="Approve" class="approve"> <input type="button" value="Revert" class="revert"> <input type="button" value="Reject" class="reject">
+                    
                     <div>
                         <p style="font-size:15px ;">Remarks</p>
                     </div>
