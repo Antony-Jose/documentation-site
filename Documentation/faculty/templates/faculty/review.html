@@ -118,15 +118,28 @@
                     
                 
                 </div>
-
+                <form action="{% url 'fviewer' stat.id %}" method="post">
+                    {% csrf_token %}
+                    {% if stat.reverted == True %}
+                <div>
+                    <p style="font-size:15px ;">Message with correction :</p>
+                </div>
+                <div class="input-body">
+                    <textarea style="border: 2px solid black;border-radius: 10px; white-space:pre; " class="input-body" id="multilineInput" name="body" rows="7" cols="150"></textarea>   
+                </div>
+                {% endif %}
             </div>
             <div>
-                <form>
-
-
-                    <input type="button" onclick="window.location.href='{% url 'fdownload' stat.id %}'"  value="Download" class="approve"> 
-                </form>
+                
+                {% if stat.reverted == True %}
+                <input type="submit" value="Resubmit" class="submit-button">
+                {% elif stat.approved == True %}
+                <input type="button" onclick="window.location.href='{% url 'fdownload' stat.id %}'"  value="Download" class="approve">
+                {% endif %}
+                    
+               
             </div>
+        </form>
         </div>
 
     </div>

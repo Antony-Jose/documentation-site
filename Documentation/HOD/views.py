@@ -50,10 +50,7 @@ def evaluate(request,object_id):
         object = mfrequest.objects.get(pk=object_id)
         object.remarks=request.POST.get('remarks')
         print( object.remarks)
-        print(request.POST.get('remarks'))
-        print(request.POST.get('evaluation'))
         eval=request.POST.get('evaluation')
-        
         if eval=="approve":
             object.rejected=False
             object.approved=True
@@ -68,4 +65,7 @@ def evaluate(request,object_id):
             object.reverted=True
         object.checked=True
         object.save()
-        return render(request, 'HOD/notifications.html')
+        reciver = request.user
+        all_status = mfrequest.objects.filter(reciver=reciver)
+        return render(request, 'HOD/notifications.html',{'status': all_status})
+        

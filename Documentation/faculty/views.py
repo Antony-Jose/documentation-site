@@ -74,8 +74,20 @@ def facultyLogin(request):
 
 
 def fViewer(request,object_id):
+    if request.method == 'POST':
+        object = mfrequest.objects.get(pk=object_id)
+        object.body=request.POST.get('body')
+        print( object.body)
+        print(request.POST.get('body'))
+        object.checked=False
+        object.save()
+        sender = request.user
+        all_status = mfrequest.objects.filter(sender=sender)
+        return render(request,'faculty/notifications.html',{'status': all_status})
     object = mfrequest.objects.get(pk=object_id)
     return render(request,'faculty/review.html',{'stat':object})
+
+    
 
 
 import io
@@ -123,5 +135,5 @@ def fdownload(request, object_id):
 
     # FileResponse sets the Content-Disposition header so that browsers present the option to save the file
     buffer.seek(0)
-    return FileResponse(buffer, as_attachment=True, filename="hello.pdf")
+    return FileResponse(buffer, as_attachment=True, filename="letter.pdf")
 
